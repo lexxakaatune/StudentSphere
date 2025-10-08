@@ -1,7 +1,9 @@
-<?php 
-require('config/config.php');
+<?php
+  $userID = getUserSID();
+  $adminID = getAdminSID();
+  $key = 'Photo_Upload';
+  $getPhoto = getUserKey($key, $userID);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +92,7 @@ require('config/config.php');
           <li class="profile__li header__li">
             <a href="?page=profile&view=details">
               <figure class="Profile__figure">
-                <img src="uploads/<?= $_SESSION['flash']['DP']; ?>">
+                <img src="uploads/<?= $getPhoto; ?>">
               </figure>
             </a>
           </li>

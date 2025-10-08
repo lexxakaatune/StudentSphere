@@ -39,8 +39,10 @@ switch($page) {
     break;
 
   case 'profile';
-    render('auth/profile');
-    break;  
+    render('auth/profile', [
+      'userID' => getUserSID()
+    ]);
+    break;
 
   default:
     $ctrl = new PageController();

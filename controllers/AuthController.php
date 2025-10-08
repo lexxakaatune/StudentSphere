@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 class AuthController {
   public function index(): void {
-    require('config/config.php');
     /* if ($_SESSION['flash']['signup_error']) {
       $signupErr = get_flash('signup_error');
     } else if ($_SESSION['flash']['login_error']) {
@@ -115,7 +114,6 @@ class AuthController {
       $pwd = trim(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
 
       try {
-        require('config/config.php');
         // ERROR HANDLERS
           //if password !empty email and password ...  
           if (!empty($email) && !empty($pwd)) {

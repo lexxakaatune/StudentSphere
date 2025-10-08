@@ -1,18 +1,24 @@
 <?php 
-render('layout/header'); 
+render('layout/header');   
   if (empty($userID)) {
-    $error = 'Error loggin, Try again.';
-    set_flash('loginErr', $error);
+    $error = 'Error connecting profile, Try again.';
+    set_flash('login_error', $error);
     header('Location: ?page=auth&view=login');
     exit;
   }
+  $photo = getUserKey('Photo_Upload', $userID);
+  $name = getUserKey('Name', $userID);
+  $dept = getUserKey('Department', $userID);
+  $class = getUserKey('Class', $userID);
+  $gender = getUserKey('Gender', $userID);
+  $email = getUserKey('Email', $userID);
 ?>
 <!-- //REMEMBER TO CHANGE TO MAIN -->
 <section class="profile__hero">
   <figure class="profile__hero-figure">
-    <img id="userProfileImg" src="uploads/<?= $user['Photo_Upload']?>" alt="profilephoto" title="My profile picture" width="400" height="400">
+    <img id="userProfileImg" src="uploads/<?= $photo ?>" alt="profilephoto" title="My profile picture" width="400" height="400">
     <figcaption class="center profile__hero-figcaption">
-      <?= $user['Name'] ?>
+      <?= $name ?>
     </figcaption>    
   </figure>
   <div class="profile__hero-div">
@@ -51,11 +57,12 @@ render('layout/header');
     
     switch($view) {
       case 'details';
-        if (!empty($user)) {
-          render('profile/details');
-        } else {
-          echo '<main class="main"> No details found...</main>';
-        }        
+          render('profile/details', [
+            'email' => $email,
+            'class' => $class,
+            'gender' => $gender,
+            'dept' => $dept
+          ]); 
         break;
       case 'skills';
         render('profile/skills');

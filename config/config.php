@@ -45,15 +45,26 @@ spl_autoload_register(function (string $className): void {
   }
 });
 
-if (isset($_SESSION['flash']['admin-id'])) {
-  $adminID = $_SESSION['flash']['admin-id'];
-} else if (isset($_SESSION['flash']['user-id'])) {
-  $userID = $_SESSION['flash']['user-id'];
-  $user = UserModel::getUser($userID);
-  $profilePic = $user['Photo_Upload'];
+function getUserSID() {
+  if (isset($_SESSION['flash']['user-id'])) {
+    $userID = $_SESSION['flash']['user-id'];
+    return $userID;
+  }
+  return null;
 }
 
+function getAdminSID() {
+  if (isset($_SESSION['flash']['admin-id'])) {
+    $adminID = $_SESSION['flash']['admin-id'];
+    return $adminID;
+  } 
+  return null;
+}
 
+function getUserKey($key, $userID) {
+  $user = UserModel::getUser($userID);
+  return $user[$key];
+}
 
 
 

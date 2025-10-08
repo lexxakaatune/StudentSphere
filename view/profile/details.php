@@ -2,19 +2,19 @@
   <table class="profile__table">
     <tr class="profile__hero-tr">
       <th class="profile__hero-th">Email:</th>
-      <td class="profile__hero-td"><?= $user['Email'] ?></td>
+      <td class="profile__hero-td"><?= $email ?></td>
     </tr>
     <tr class="profile__hero-tr">
       <th class="profile__hero-th">Class:</th>
-      <td class="profile__hero-td"><?= $user['Class'] ?></td>
+      <td class="profile__hero-td"><?= $class ?></td>
     </tr>
     <tr class="profile__hero-tr">
       <th class="profile__hero-th">Gender:</th>
-      <td class="profile__hero-td"><?= $user['gender'] ?></td>
+      <td class="profile__hero-td"><?= $gender ?></td>
     </tr>
     <tr class="profile__hero-tr">
       <th class="profile__hero-th">Department:</th>
-      <td class="profile__hero-td"><?= $user['Department'] ?></td>
+      <td class="profile__hero-td"><?= $dept ?></td>
     </tr>
     <tr class="profile__hero-tr center">
       <td>

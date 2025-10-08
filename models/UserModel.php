@@ -17,6 +17,7 @@ class UserModel {
      return $stmt->execute();
   }
 
+  // change and modify this func to getUserArray coz i have another func name getUser working with the session.
   public static function getUser(string|int $email): array|bool {
     global $pdo;
     if (is_numeric($email)) {
