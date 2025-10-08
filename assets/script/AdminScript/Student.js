@@ -5,6 +5,6 @@ export function initStudents() {
   adminUpdateSection = document.getElementById('adminUpdateSection');
 
   adminUpdateBtn.forEach(btn => {
-    handleToggling(btn, adminUpdateSection, undefined, 'upgdate', 'update');
+    handleToggling(btn, adminUpdateSection, undefined, 'update', 'update');
   });  
 }

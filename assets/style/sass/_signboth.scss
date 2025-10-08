@@ -1,3 +1,4 @@
+
 .sign {
   background-color: $html-bg;
   color: $font-color;
@@ -101,10 +102,16 @@
 .login__button,
 .signup__button {
   cursor: pointer;
+  font-size: clamp(1rem, 20vw, 1.2rem);
   font-weight: bolder;
   width: 80%;
   margin: 0.5rem auto;
   display: block;
+}
+
+.admin__button{
+  background-color: $html-bg;
+  text-shadow: 0px 0px 5px $shadow-color;
 }
 
 .go-to {
@@ -113,4 +120,14 @@
   background: transparent;
   text-transform: capitalize;
   font-weight: bold;
+}
+
+.admin__sign, 
+.admin__legend {
+  background-color: $header-color;
+  color: $inverse-font-color;
+}
+
+.admin-link-switch-a {
+  color: $html-bg;
 }

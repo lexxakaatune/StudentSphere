@@ -105,13 +105,13 @@
   </form>
 </section>
 
-<section id="adminLoginSection" class="sign hidden">
+<section id="adminLoginSection" class="sign admin__sign hidden">
   <h2 class="login__h2">Admin Engine</h2>
 
   <form class="login__form" action="?page=auth" method="post">
     <input type="hidden" name="action" value="admin_login">
     <fieldset class="login__fieldset">
-      <legend class="login__legend">
+      <legend class="login__legend admin__legend">
         Login to Your Admin Panel
       </legend>  
       <p class="login__p">
@@ -126,14 +126,14 @@
     </fieldset>
 
     <p class="link-switch">
-      Not an admin <a href="?page=auth&view=login">Login</a> as student.
+      Not an admin <a href="?page=auth&view=login" class="admin-link-switch-a">Login</a> as student.
     </p>
 
     <p class="login__P center" id="Message">
       <span class="sign-error"> <?= get_flash('adminErr'); ?> </span>
     </p>
 
-  <button class="login__button btn">Log in</button>
+  <button class="login__button admin__button btn">Log in</button>
   </form>
 </section>
 
