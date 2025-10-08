@@ -22,7 +22,7 @@ class UserModel {
     if (is_numeric($email)) {
      $query = "SELECT Name, Email, Department, Gender, Class, Photo_Upload FROM students WHERE ID = :ID;";
     } else if (!is_numeric($email)) {
-      $query = "SELECT * FROM students WHERE Email = :Email;";
+      $query = "SELECT Name, Email, Department, Gender, Class, Photo_Upload FROM students WHERE Email = :Email;";
     }
     $stmt = $pdo->prepare($query);
     if (is_numeric($email)) {

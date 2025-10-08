@@ -49,6 +49,8 @@ if (isset($_SESSION['flash']['admin-id'])) {
   $adminID = $_SESSION['flash']['admin-id'];
 } else if (isset($_SESSION['flash']['user-id'])) {
   $userID = $_SESSION['flash']['user-id'];
+  $user = UserModel::getUser($userID);
+  $profilePic = $user['Photo_Upload'];
 }
 
 

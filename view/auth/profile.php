@@ -1,17 +1,10 @@
-<?php render('layout/header'); ?>
-<?php
-  if (!empty($userID)) {
-    $user = UserModel::getUser($userID);
-    set_flash('user', $user);
-    $profilePic = $user['Photo_Upload'];
-    set_flash('DP', $profilePic);
-  } else if (empty($userID)) {
-    if (empty($adminID)) {
-      $error = 'Error loggin, Try again.';
-      set_flash('adminErr', $error);
-      header('Location: ?page=auth&view=admin');
-      exit;
-    }
+<?php 
+render('layout/header'); 
+  if (empty($userID)) {
+    $error = 'Error loggin, Try again.';
+    set_flash('loginErr', $error);
+    header('Location: ?page=auth&view=login');
+    exit;
   }
 ?>
 <!-- //REMEMBER TO CHANGE TO MAIN -->

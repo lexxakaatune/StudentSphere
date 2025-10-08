@@ -1,6 +1,3 @@
-<?php
-$user = get_flash('user');
-?>
 <section id="profileTable" class="profile-details__section">
   <table class="profile__table">
     <tr class="profile__hero-tr">
