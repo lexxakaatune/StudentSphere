@@ -1,0 +1,116 @@
+.sign {
+  background-color: $html-bg;
+  color: $font-color;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.signup__h2,
+.login__h2 {
+  font-size: 2rem;
+}
+
+/* //REGISTER PAGE */
+.signup__form,
+.login__form {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.5rem;
+}
+
+.login__fieldset,
+.signup__fieldset,
+.login__legend,
+.signup__legend {
+  border: none;
+  box-shadow: 0px 0px 5px $font-color;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.login__legend,
+.signup__legend {
+  background-color: $html-bg;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.login__p,
+.signup__p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.signup__label {
+  text-transform: lowercase;
+  font-weight: bold;
+  display: block;
+}
+
+.login__p input,
+.signup__p input {
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.signup__div {
+  margin-bottom: 0.25rem;  
+  padding: 0.25rem;
+  display: inline-block;
+}
+
+.signup__div select,
+.signup__div input {
+  border: none;
+  margin: 0.25rem;
+  padding: 0.25rem;
+}
+
+.link-switch{
+  text-transform: capitalize;
+  margin: 0.5rem auto;
+}
+
+.sign-load,
+.sign-error,
+.sign-success {
+  text-shadow: 2px 3px 5px #000;
+  text-transform: capitalize;
+  font-weight: bolder;
+}
+
+.sign-load {
+  color: $inverse-font-color;
+}
+.sign-error {
+  color: $link-active;
+}
+
+.login__button,
+.signup__button {
+  cursor: pointer;
+  font-weight: bolder;
+  width: 80%;
+  margin: 0.5rem auto;
+  display: block;
+}
+
+.go-to {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  text-transform: capitalize;
+  font-weight: bold;
+}

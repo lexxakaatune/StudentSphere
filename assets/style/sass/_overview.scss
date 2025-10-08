@@ -1,0 +1,90 @@
+.overview__main {
+  min-width: 100%;
+}
+
+.overview_stats__section {
+  background-color: $header-color;
+  padding: 1rem;
+}
+.overview_stats__h2,
+.overview_stats__p {
+  color: $inverse-font-color;
+}
+
+.overview_stats__ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+
+  @include mq(600px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.overview_stats__li {
+  background-color: white;
+  border-radius: 10px;
+  width: clamp(150px, 95%, 300px);
+  padding: 1rem;
+}
+
+.overview_stats__li:first-child {
+  background-color: $html-bg;
+}
+
+.overview_stats__li li {
+  margin-top: 0.5rem;
+}
+
+.overview_stats__li li i {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+.overview_stats__li li button {
+  background-color: $html-bg;
+  color: $font-color;
+  box-shadow: 0px 0px 5px $shadow-color;
+  font-weight: bold;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.overview_stats__li strong {
+  font-size: 1.6rem;
+}
+
+.overview_stats__li span {
+  font-weight: 500;
+}
+
+//Deadlines UL
+.deadlines {
+  box-shadow: 0 0 5px $shadow-color;
+  max-width: 300px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.deadlines__header {
+  @include flexBetween;
+  order: -1;
+}
+
+.deadlines__li {
+  border-left: 5px solid peachpuff;
+  border-radius: 10px;
+  background-color: $html-bg;
+  width: 90%;
+  margin: 1rem auto;
+  padding: 0.5rem;
+}
+
+.deadlines_add__li {
+  order: 1;
+}

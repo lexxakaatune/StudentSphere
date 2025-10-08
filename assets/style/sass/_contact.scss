@@ -1,0 +1,54 @@
+/* // CONTACT PAGE*/
+.contact__hero {
+  background-color: $hero-color;
+  color: $inverse-font-color;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(179, 255, 0, 0.226)), url(../images/student-hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  min-height: 100dvh;
+  @include flexCenter;
+}
+
+.contact {
+  width: clamp(200px, 95vw, 700px);
+  margin-bottom: 1rem;
+}
+
+.contact address {
+  margin-bottom: 1rem;
+}
+
+.contact__social-handle {
+  @include flexBetween;
+}
+
+.contact__social-handle li {
+  border-radius: 15px;
+  background-color: $header-color;
+  text-align: center;
+  width: 50px;
+  padding: 0.5rem;
+}
+
+.contact__social-handle .fa-brands {
+  color: $inverse-font-color;
+  font-size: 2rem;
+}
+
+.contact__fieldset {
+  border: none;
+}
+
+.contact__p {
+  margin: 1em 0;
+}
+
+.contact__input,
+.contact__textarea {
+  border-radius: 15px;
+  border-width: 2px;
+  width: 100%;
+  padding: 0.5em;
+}

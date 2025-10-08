@@ -1,0 +1,185 @@
+/* PROFILE PAGE HERO SECTION */
+.profile__hero {
+  border-bottom: 2px solid $border-color;
+  background-color: $header-color;
+  background-image: linear-gradient(hsla(0, 0%, 30%, 0.7)), url('../images/profile.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: $inverse-font-color;
+  width: 100%;
+  padding: 3rem 0.5rem;
+  @include flexBetween;
+  gap: 30px;
+  @include mq($large) {
+    padding-top: 150px;
+  }
+}
+
+.profile__hero-div {
+  flex: 3 1;
+
+  @include mq($large) {
+    max-width: 50%;
+  }
+}
+
+.profile__hero-figure {
+  overflow: hidden;
+  width: clamp(100px, 20vw, 250px);
+  @include flexCenter;
+  flex-direction: column;
+}
+
+.profile__hero-figure img {
+  border-radius: 50%;
+  border: 5px double $inverse-font-color;
+  width: clamp(100px, 20vw, 180px);
+  height: clamp(100px, 20vw, 180px);
+}
+
+.profile__hero-figcaption {
+  text-shadow: 2px 2px 5px $font-color;
+  text-transform: capitalize;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.profile__hero-p {
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 5px $font-color;
+}
+
+/* PROFILE PAGE MAIN ELEMENT */
+.profile__main {
+  background-color: $main-bg;
+  width: 100%;
+  max-width: 800px;
+  min-height: 100vh;
+  @include flexStart;
+  flex-direction: column;
+  @include mq(800px) {
+    border: 1px solid $border-color;
+    box-shadow: 5px 10px 8px $shadow-color;
+    min-height: 65vh;
+  }
+}
+
+.profile__form_holder {
+  width: 100%;
+  @include flexCenter
+}
+
+.profile__form {
+  width: clamp(60px, 33.33%, 200px);
+  padding: 0.5rem;
+}
+
+.profile__form button {
+  cursor: pointer;
+  font-size: clamp(0.6rem, 4vw, 1rem);
+  font-weight: bold;
+  width: 100%;
+}
+
+.selected {
+  background-color: #000;
+  color: #fff;
+}
+
+/* // PROFILE ASSIGNMENTS SECTION */
+
+
+/* // PROFILE DETAILS SECTION */
+.profile-details__section {
+  width: 100%;
+  margin-top: 1rem;
+  @include flexCenter;
+  flex-direction: column;
+}
+  /* // PROFILE TABLE AND UPDATE SECTION*/
+.update__section,
+.delete__form,
+.profile__table {
+  box-shadow: 0px 0px 5px $shadow-color;
+  width: clamp(100px, 90vw, 650px);
+}
+
+.profile__table,
+.profile__hero-th,
+.profile__hero-td {
+  border: 2px double $border-color;
+  margin: 0.25rem;
+  padding: 0.25rem;
+}
+
+.profile__hero-th,
+.profile__hero-td {
+  margin-bottom: 0.5rem;
+}
+
+.profile__hero-th {
+  background-color: $html-bg;
+  text-align: start;
+  white-space: nowrap;
+}
+
+.profile__hero-td {
+  overflow-x: scroll;
+  scrollbar-width: none;
+  background-color: var(--LIGHTCOLOR);
+  box-shadow: var(--BOX-SHADOW);
+}
+
+.profile-details__p {
+  width: 100%;
+}
+
+//UPDATE FORM SECTION... Also have update section using a style above from table...
+.update__section {
+  flex-direction: column;
+}
+
+.update__form details {
+  box-shadow: 0px 0px 5px $shadow-color;
+  padding: 0.5rem;
+}
+
+.update__form summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.update__form summary::after {
+  content: "+";
+  float: right;
+}
+
+.update__form details[open] {
+  background-color: $html-bg;
+}
+
+.update__form details[open] summary::after {
+  content: "-";
+}
+
+.delete__form {
+  background-color: $html-bg;
+  padding: 0.25rem;
+  flex-direction: column;
+}
+
+.delete__form input,
+.update__form input {
+  width: 100%;
+  margin-bottom: 0.25rem;
+  padding: 0.25rem;
+  display: block;
+}
+
+.delete__form button,
+.update__form button {
+  width: 50%;
+  display: block;
+}
