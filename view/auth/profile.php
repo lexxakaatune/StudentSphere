@@ -1,11 +1,11 @@
-<?php 
-render('layout/header');   
+<?php   
   if (empty($userID)) {
     $error = 'Error connecting profile, Try again.';
     set_flash('login_error', $error);
     header('Location: ?page=auth&view=login');
     exit;
   }
+render('layout/header', ['userID' => $userID]); 
   $photo = getUserKey('Photo_Upload', $userID);
   $name = getUserKey('Name', $userID);
   $dept = getUserKey('Department', $userID);

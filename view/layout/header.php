@@ -1,8 +1,7 @@
 <?php
-  $userID = getUserSID();
-  $adminID = getAdminSID();
-  $key = 'Photo_Upload';
-  $getPhoto = getUserKey($key, $userID);
+  if (!empty($userID)) {
+    $photo = getUserKey('Photo_Upload', $userID);
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,7 +91,7 @@
           <li class="profile__li header__li">
             <a href="?page=profile&view=details">
               <figure class="Profile__figure">
-                <img src="uploads/<?= $getPhoto; ?>">
+                <img src="uploads/<?= $photo; ?>">
               </figure>
             </a>
           </li>

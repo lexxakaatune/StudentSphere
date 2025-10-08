@@ -1,11 +1,11 @@
 <?php 
-render('layout/header');
-  if (empty($_SESSION['flash']['admin-id'])) {
+  if (empty($adminID)) {
     $error = 'Error loading admin page';
     set_flash('adminErr', $error);
     header('Location: ?page=auth&view=admin');
     exit();
   }
+render('layout/header', ['adminID' => $adminID]);
 
   $view = filter_input(INPUT_POST, 'view', FILTER_SANITIZE_STRING);
   if (empty($view)) {

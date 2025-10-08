@@ -257,7 +257,6 @@ class AuthController {
       $pwd = filter_input(INPUT_POST, 'admin_password', FILTER_SANITIZE_STRING);
 
       try {
-        require('config/config.php');
         $record = AdminModel::getAdmin($adminUsername);
 
         if (!empty($record)) {

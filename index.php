@@ -33,9 +33,10 @@ switch($page) {
     $ctrl->{$action}();
     break;
 
-  case 'admin';
-    $ctrl = new AdminController();
-    $ctrl->{$action}(); 
+  case 'admin'; 
+    render('auth/admin', [
+      'adminID' => getAdminSID()
+    ]);
     break;
 
   case 'profile';
