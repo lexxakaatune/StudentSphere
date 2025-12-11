@@ -1,5 +1,6 @@
 <?php
-  if (!empty($userID)) {
+  $userID = getUserSID();
+  if (isset($userID)) {
     $photo = getUserKey('Photo_Upload', $userID);
   }
 ?>
@@ -25,7 +26,7 @@
 <body>
   <header class="header">
     <?php if (!empty($adminID)) { ?>
-      <a class="none" href="?page=admin&view=overviews">
+      <a class="none" href="?page=auth&action=admin&view=overviews">
         <h1 id="headerTitle">
           StudentSphere Admin
         </h1>
@@ -39,7 +40,7 @@
     <?php } ?> 
     
 
-    <?php if (!empty($adminID) && ($_GET['page'] === 'admin')) { ?>
+    <?php if (!empty($adminID) && ($_GET['action'] === 'admin')) { ?>
       <details>
         <summary></summary>
           <a href="?page=index" class="none">
@@ -52,7 +53,7 @@
       <nav id="headerNav" class="header__nav hidden">
         <ul class="header__ul none">
           <li class="profile__li header__li">
-            <a href="?page=profile">
+            <a href="?page=auth&action=admin">
               <figure class="Profile__figure">
                 <img src="assets/images/woman.jpg">
               </figure>
@@ -65,7 +66,7 @@
             ];
           foreach ($links as $key => $label) { ?>
             <li class='header__li'>
-              <a class='none header__li_a' href='?page=admin&view=<?=$key?>'>
+              <a class='none header__li_a' href='?page=auth&action=admin&view=<?=$key?>'>
                 <?= $label ?>
               </a>
             </li>
@@ -78,18 +79,19 @@
             ];
           foreach ($links as $key => $label) { ?>
             <li class='header__li'>
-              <a class='none header__li_a' href='?page=admin&view=<?= $key ?>'>
+              <a class='none header__li_a' href='?page=auth&action=admin&view=<?= $key ?>'>
                 <?= $label ?>
               </a>
             </li>            
           <?php } ?>
         </ul>
       </nav>
+
     <?php } else if (!empty($userID)) { ?>
       <nav id="headerNav" class="header__nav hidden">
         <ul class="header__ul none">
           <li class="profile__li header__li">
-            <a href="?page=profile&view=details">
+            <a href="?page=auth&action=profile&view=details">
               <figure class="Profile__figure">
                 <img src="uploads/<?= $photo; ?>">
               </figure>

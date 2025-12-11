@@ -32,19 +32,7 @@ switch($page) {
     $ctrl = new AuthController();
     $ctrl->{$action}();
     break;
-
-  case 'admin'; 
-    render('auth/admin', [
-      'adminID' => getAdminSID()
-    ]);
-    break;
-
-  case 'profile';
-    render('auth/profile', [
-      'userID' => getUserSID()
-    ]);
-    break;
-
+    
   default:
     $ctrl = new PageController();
     $ctrl->{$page}();

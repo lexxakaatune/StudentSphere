@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: studentsphere
+    runtime: docker
+    region: ohio
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DB_DRIVER
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: studentsphere
+          property: host
+      - key: DB_PORT
+        value: 5432
+      - key: DB_USER
+        fromDatabase:
+          name: studentsphere
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: studentsphere
+          property: password
+      - key: DB_NAME
+        fromDatabase:
+          name: studentsphere
+          property: database
+
+databases:
+  - name: studentsphere
+    engine: postgres
+    version: '14'
+    plan: free

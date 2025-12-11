@@ -16,18 +16,28 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-//DATABASE CONNECTIOn
-$dsn = 'mysql:host=localhost;dbname=studentsphere';
-$username = 'root';
+//DATABASE CONNECTION
+// Support both local development and Render deployment
+$host = getenv('DB_HOST') ?: 'localhost';
+$user = getenv('DB_USER') ?: 'root';
+$pass = getenv('DB_PASSWORD') ?: '';
+$db = getenv('DB_NAME') ?: 'studentsphere';
+$port = getenv('DB_PORT') ?: '5432'; // PostgreSQL default port
 
 try {
-  $pdo = new PDO($dsn, $username);
-
+  // Use PostgreSQL for Render, MySQL for local development
+  $driver = getenv('DB_DRIVER') ?: 'mysql';
+  
+  if ($driver === 'pgsql') {
+    $dsn = "pgsql:host=$host;port=$port;dbname=$db";
+  } else {
+    $dsn = "mysql:host=$host;dbname=$db;charset=utf8";
+  }
+  
+  $pdo = new PDO($dsn, $user, $pass);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-  $error = "Database Error: ";
-  $error .= $e->getMessage();
-  include('view/error.php');
-  exit();
+  die("Database Error: " . $e->getMessage());
 }
 
 //SIMPLE AUTOLOADER

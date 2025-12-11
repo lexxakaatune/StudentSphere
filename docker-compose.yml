@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  php-apache:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:8080"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - DB_DRIVER=mysql
+      - DB_HOST=db
+      - DB_USER=studentsphere
+      - DB_PASSWORD=studentsphere_pwd
+      - DB_NAME=studentsphere
+      - DB_PORT=3306
+    depends_on:
+      - db
+    networks:
+      - student-network
+
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=studentsphere
+      - MYSQL_USER=studentsphere
+      - MYSQL_PASSWORD=studentsphere_pwd
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - student-network
+
+volumes:
+  db_data:
+
+networks:
+  student-network:
+    driver: bridge

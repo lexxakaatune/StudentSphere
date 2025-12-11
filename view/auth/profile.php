@@ -1,11 +1,14 @@
-<?php   
+<?php 
+  render('layout/header'); 
+  $userID = getUserSID();
+
   if (empty($userID)) {
     $error = 'Error connecting profile, Try again.';
     set_flash('login_error', $error);
     header('Location: ?page=auth&view=login');
     exit;
   }
-render('layout/header', ['userID' => $userID]); 
+
   $photo = getUserKey('Photo_Upload', $userID);
   $name = getUserKey('Name', $userID);
   $dept = getUserKey('Department', $userID);
@@ -13,6 +16,7 @@ render('layout/header', ['userID' => $userID]);
   $gender = getUserKey('Gender', $userID);
   $email = getUserKey('Email', $userID);
 ?>
+
 <!-- //REMEMBER TO CHANGE TO MAIN -->
 <section class="profile__hero">
   <figure class="profile__hero-figure">
