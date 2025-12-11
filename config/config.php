@@ -18,26 +18,32 @@ if (session_status() === PHP_SESSION_NONE) {
 
 //DATABASE CONNECTION
 // Support both local development and Render deployment
+$driver = getenv('DB_DRIVER') ?: 'mysql';
 $host = getenv('DB_HOST') ?: 'localhost';
 $user = getenv('DB_USER') ?: 'root';
 $pass = getenv('DB_PASSWORD') ?: '';
 $db = getenv('DB_NAME') ?: 'studentsphere';
-$port = getenv('DB_PORT') ?: '5432'; // PostgreSQL default port
+$port = getenv('DB_PORT') ?: ($driver === 'pgsql' ? '5432' : '3306');
 
 try {
-  // Use PostgreSQL for Render, MySQL for local development
-  $driver = getenv('DB_DRIVER') ?: 'mysql';
-  
   if ($driver === 'pgsql') {
-    $dsn = "pgsql:host=$host;port=$port;dbname=$db";
+    // PostgreSQL connection (for Render)
+    $dsn = "pgsql:host=$host;port=$port;dbname=$db;sslmode=require";
+    $pdo = new PDO($dsn, $user, $pass, [
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ]);
   } else {
-    $dsn = "mysql:host=$host;dbname=$db;charset=utf8";
+    // MySQL connection (for local development)
+    $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4";
+    $pdo = new PDO($dsn, $user, $pass, [
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ]);
   }
-  
-  $pdo = new PDO($dsn, $user, $pass);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-  die("Database Error: " . $e->getMessage());
+  error_log("Database Connection Error: " . $e->getMessage());
+  die("Database Error: Unable to connect to the database. Please try again later.");
 }
 
 //SIMPLE AUTOLOADER
