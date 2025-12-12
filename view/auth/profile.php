@@ -51,9 +51,9 @@
   </div>
 
   <?php
-    $view = filter_input(INPUT_POST, 'view', FILTER_SANITIZE_STRING);
+    $view = filter_input(INPUT_POST, 'view', FILTER_SANITIZE_SPECIAL_CHARS);
     if (!$view) {
-      $view = filter_input(INPUT_GET, 'view', FILTER_SANITIZE_STRING);
+      $view = filter_input(INPUT_GET, 'view', FILTER_SANITIZE_SPECIAL_CHARS);
       if (!$view) {
         $view = 'details';
       }

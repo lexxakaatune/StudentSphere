@@ -7,9 +7,9 @@
   }
 render('layout/header', ['adminID' => $adminID]);
 
-  $view = filter_input(INPUT_POST, 'view', FILTER_SANITIZE_STRING);
+  $view = filter_input(INPUT_POST, 'view', FILTER_SANITIZE_SPECIAL_CHARS);
   if (empty($view)) {
-    $view = filter_input(INPUT_GET, 'view', FILTER_SANITIZE_STRING);
+    $view = filter_input(INPUT_GET, 'view', FILTER_SANITIZE_SPECIAL_CHARS);
     if (empty($view)) {
       $view = 'overviews';
     }

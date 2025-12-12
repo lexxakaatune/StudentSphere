@@ -4,17 +4,17 @@ require('config/config.php');
 require('includes/flash.php');
 require('includes/view.php');
 
-$page = filter_input(INPUT_POST, 'page', FILTER_SANITIZE_STRING); 
+$page = filter_input(INPUT_POST, 'page', FILTER_SANITIZE_SPECIAL_CHARS); 
 if (!$page) {
-  $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
+  $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS);
   if (!$page) {
     $page = 'index';
   }
 }
 
-$action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
+$action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
 if (empty($action)) {
-  $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING) ?: 'index';
+  $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS) ?: 'index';
 }
 
 //ROUTE TO APPROPRIATE CONTROLLER OR VIEW
